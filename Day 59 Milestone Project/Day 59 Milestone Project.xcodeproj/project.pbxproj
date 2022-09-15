@@ -14,6 +14,7 @@
 		3032B80328D363AB00C7AA32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3032B80228D363AB00C7AA32 /* Assets.xcassets */; };
 		3032B80628D363AB00C7AA32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3032B80428D363AB00C7AA32 /* LaunchScreen.storyboard */; };
 		3032B81028D3688700C7AA32 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032B80F28D3688700C7AA32 /* Country.swift */; };
+		3032B81828D37B1F00C7AA32 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032B81728D37B1F00C7AA32 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3032B80528D363AB00C7AA32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3032B80728D363AB00C7AA32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3032B80F28D3688700C7AA32 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		3032B81728D37B1F00C7AA32 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				3032B7FB28D363AB00C7AA32 /* SceneDelegate.swift */,
 				3032B7FD28D363AB00C7AA32 /* ViewController.swift */,
 				3032B80F28D3688700C7AA32 /* Country.swift */,
+				3032B81728D37B1F00C7AA32 /* DetailViewController.swift */,
 				3032B7FF28D363AB00C7AA32 /* Main.storyboard */,
 				3032B80228D363AB00C7AA32 /* Assets.xcassets */,
 				3032B80428D363AB00C7AA32 /* LaunchScreen.storyboard */,
@@ -143,6 +146,7 @@
 			files = (
 				3032B7FE28D363AB00C7AA32 /* ViewController.swift in Sources */,
 				3032B7FA28D363AB00C7AA32 /* AppDelegate.swift in Sources */,
+				3032B81828D37B1F00C7AA32 /* DetailViewController.swift in Sources */,
 				3032B81028D3688700C7AA32 /* Country.swift in Sources */,
 				3032B7FC28D363AB00C7AA32 /* SceneDelegate.swift in Sources */,
 			);

@@ -44,7 +44,20 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "newViewController") as? DetailViewController else {
+            print("Cannot push the view Controller")
+            return
+        }
+        
+        vc.nameS = countries[indexPath.row].name
+        vc.populationS = countries[indexPath.row].population
+        vc.capitalCityS = countries[indexPath.row].capital
+        vc.areaS = countries[indexPath.row].area
+        vc.regionS = countries[indexPath.row].region
+        vc.demonymS = countries[indexPath.row].demonym
+        vc.subregionS = countries[indexPath.row].subregion
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
