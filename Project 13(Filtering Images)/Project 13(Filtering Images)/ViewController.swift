@@ -65,7 +65,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         if let popoverController = ac.popoverPresentationController{
-            popoverController.sourceView = sender
+            //popoverController.sourceView = sender
             popoverController.sourceRect = sender.bounds
         }
         present(ac, animated: true)
