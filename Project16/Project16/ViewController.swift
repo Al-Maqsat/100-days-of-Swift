@@ -25,6 +25,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotations([london, oslo, paris, rome, washington, Nur_Sultan, Almaty])
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(changeTheMapType))
+        
+        
         guard annotation is Capital else {return nil}
         
         let identifier = "Capital"
@@ -33,7 +36,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         
         if annotationView == nil{
-            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier) 
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             
             annotationView?.canShowCallout  = true
             
@@ -42,7 +45,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-        annotationView?.markerTintColor = UIColor(red: 0, green: 0, blue: 256, alpha: 1)
+        annotationView?.markerTintColor = UIColor(red: 0, green: 10, blue: 256, alpha: 1)
 
         return annotationView
     }
@@ -56,6 +59,24 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
+    }
+    
+    @objc func changeTheMapType(){
+        
+        let ac = UIAlertController(title: "Choose the type of the map", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Standard", style: .default, handler: standardView))
+        ac.addAction(UIAlertAction(title: "Sattelite", style: .default, handler: satteliteView))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
+        
+    }
+    
+    func standardView(_ action: UIAlertAction){
+        mapView.mapType = .standard
+    }
+    
+    func satteliteView(_ action: UIAlertAction){
+        mapView.mapType = .satellite
     }
 }
 
