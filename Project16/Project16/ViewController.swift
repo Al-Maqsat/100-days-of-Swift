@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -23,6 +23,24 @@ class ViewController: UIViewController {
         let Almaty = Capital(title: "Almaty", coordinate: CLLocationCoordinate2D(latitude: 43.2220, longitude: 76.8512), info: "City of the apples")
         
         mapView.addAnnotations([london, oslo, paris, rome, washington, Nur_Sultan, Almaty])
+    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is Capital else {return nil}
+        
+        let identifier = "Capital"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil{
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout  = true
+            
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = btn
+        } else {
+            annotationView?.annotation = annotation
+        }
+        return annotationView
     }
 }
 
