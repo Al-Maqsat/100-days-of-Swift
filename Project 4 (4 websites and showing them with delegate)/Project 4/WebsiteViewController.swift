@@ -25,7 +25,7 @@ class WebsiteViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UINavigationBar.appearance().isTranslucent = true
+//        UINavigationBar.appearance().isTranslucent = true
 //        navigationController?.navigationBar.isTranslucent = true
 //        navigationController?.view.backgroundColor = .clear
         

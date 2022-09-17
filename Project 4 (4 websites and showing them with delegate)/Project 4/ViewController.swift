@@ -12,6 +12,7 @@ class ViewController: UITableViewController {
     var safeWebsites = ["apple.com", "hackingwithswift.com"]
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         title = "Browser"
         navigationController?.navigationBar.prefersLargeTitles = true
