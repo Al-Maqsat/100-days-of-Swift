@@ -57,6 +57,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let placeInfo = capital.info
         
         let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Learn more...", style: .cancel, handler: pushingWebsite))
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
@@ -77,6 +78,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     func satteliteView(_ action: UIAlertAction){
         mapView.mapType = .satellite
+    }
+    
+    func pushingWebsite(_ action: UIAlertAction){
+        guard let wvc = storyboard?.instantiateViewController(withIdentifier: "website") as? WebsiteViewController else {return}
+        
+            navigationController?.pushViewController(wvc, animated: true)
+        
     }
 }
 

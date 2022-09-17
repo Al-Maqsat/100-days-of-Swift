@@ -14,6 +14,7 @@
 		308D5FF428D42A3900A89FED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 308D5FF328D42A3900A89FED /* Assets.xcassets */; };
 		308D5FF728D42A3900A89FED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308D5FF528D42A3900A89FED /* LaunchScreen.storyboard */; };
 		308D5FFF28D42D1B00A89FED /* Capital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D5FFE28D42D1B00A89FED /* Capital.swift */; };
+		30EBFBEE28D59C47009F8E9E /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBFBED28D59C47009F8E9E /* Website.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		308D5FF628D42A3900A89FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		308D5FF828D42A3900A89FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		308D5FFE28D42D1B00A89FED /* Capital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capital.swift; sourceTree = "<group>"; };
+		30EBFBED28D59C47009F8E9E /* Website.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				308D5FEA28D42A3700A89FED /* AppDelegate.swift */,
 				308D5FEC28D42A3700A89FED /* SceneDelegate.swift */,
 				308D5FEE28D42A3700A89FED /* ViewController.swift */,
+				30EBFBED28D59C47009F8E9E /* Website.swift */,
 				308D5FFE28D42D1B00A89FED /* Capital.swift */,
 				308D5FF028D42A3700A89FED /* Main.storyboard */,
 				308D5FF328D42A3900A89FED /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30EBFBEE28D59C47009F8E9E /* Website.swift in Sources */,
 				308D5FEF28D42A3700A89FED /* ViewController.swift in Sources */,
 				308D5FEB28D42A3700A89FED /* AppDelegate.swift in Sources */,
 				308D5FFF28D42D1B00A89FED /* Capital.swift in Sources */,
