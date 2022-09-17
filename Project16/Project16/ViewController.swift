@@ -10,6 +10,7 @@ import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet var mapView: MKMapView!
+    var cityName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +19,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let oslo = Capital(title: "Oslo", coordinate: CLLocationCoordinate2D(latitude: 59.95, longitude: 10.75), info: "Founded over a thousand years ago.")
         let paris = Capital(title: "Paris", coordinate: CLLocationCoordinate2D(latitude: 48.8567, longitude: 2.3508), info: "Often called the City of Light.")
         let rome = Capital(title: "Rome", coordinate: CLLocationCoordinate2D(latitude: 41.9, longitude: 12.5), info: "Has a whole country inside it.")
-        let washington = Capital(title: "Washington DC", coordinate: CLLocationCoordinate2D(latitude: 38.895111, longitude: -77.036667), info: "Named after George himself.")
+        let washington = Capital(title: "Washington", coordinate: CLLocationCoordinate2D(latitude: 38.895111, longitude: -77.036667), info: "Named after George himself.")
         let Nur_Sultan = Capital(title: "Nur-Sultan", coordinate: CLLocationCoordinate2D(latitude: 51.1605, longitude: 71.4704), info: "Hope will be renamed back to Astana")
         let Almaty = Capital(title: "Almaty", coordinate: CLLocationCoordinate2D(latitude: 43.2220, longitude: 76.8512), info: "City of the apples")
         
         mapView.addAnnotations([london, oslo, paris, rome, washington, Nur_Sultan, Almaty])
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(changeTheMapType))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(changeTheMapTypeWhenTapped))
         
         
         guard annotation is Capital else {return nil}
@@ -56,33 +57,26 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let placeName = capital.title
         let placeInfo = capital.info
         
+        cityName = placeName
+        
         let ac = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Learn more...", style: .cancel, handler: pushingWebsite))
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
     
-    @objc func changeTheMapType(){
+    @objc func changeTheMapTypeWhenTapped(){
         
-        let ac = UIAlertController(title: "Choose the type of the map", message: nil, preferredStyle: .actionSheet)
-        ac.addAction(UIAlertAction(title: "Standard", style: .default, handler: standardView))
-        ac.addAction(UIAlertAction(title: "Sattelite", style: .default, handler: satteliteView))
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(ac, animated: true)
-        
-    }
-    
-    func standardView(_ action: UIAlertAction){
-        mapView.mapType = .standard
-    }
-    
-    func satteliteView(_ action: UIAlertAction){
-        mapView.mapType = .satellite
+        if mapView.mapType == .standard{
+            mapView.mapType = .satellite
+        } else if mapView.mapType == .satellite{
+            mapView.mapType = .standard
+        }
     }
     
     func pushingWebsite(_ action: UIAlertAction){
         guard let wvc = storyboard?.instantiateViewController(withIdentifier: "website") as? WebsiteViewController else {return}
-        
+        wvc.name = cityName
             navigationController?.pushViewController(wvc, animated: true)
         
     }

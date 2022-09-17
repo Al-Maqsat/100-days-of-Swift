@@ -9,6 +9,7 @@ import WebKit
 
 class WebsiteViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
+    var name: String?
     
     override func loadView() {
         webView = WKWebView()
@@ -17,9 +18,9 @@ class WebsiteViewController: UIViewController, WKNavigationDelegate {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        print("we are here")
-        let url = URL(string: "https://en.wikipedia.org/wiki/Astana")!
+        super.viewDidLoad() // Why we need this line ? for what?
+        guard let name = name else {return}
+        let url = URL(string: "https://en.wikipedia.org/wiki/\(name)")!
         
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
