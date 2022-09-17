@@ -90,6 +90,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         player.position = location
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {return}
+        var location = touch.location(in: self)
+        
+    }
+    
+    
     func didBegin(_ contact: SKPhysicsContact) {
         let explosion = SKNode(fileNamed: "explosion")!
         explosion.position = player.position
@@ -98,4 +105,5 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         player.removeFromParent()
         isGameOver = true
     }
+    
 }
