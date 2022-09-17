@@ -26,7 +26,7 @@ class ViewController: UIViewController, SelectionDelegate {
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-        nameOfTheLeader.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+        nameOfTheLeader.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         imageView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         guard let sv = storyboard?.instantiateViewController(withIdentifier: "chosen") as? secondView else {return}
         sv.selectionDelegate = self
