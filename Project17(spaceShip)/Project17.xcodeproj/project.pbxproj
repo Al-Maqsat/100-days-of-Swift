@@ -18,6 +18,7 @@
 		30868FF028D5D0AA00B8B37B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30868FEE28D5D0AA00B8B37B /* LaunchScreen.storyboard */; };
 		30868FF828D5D12D00B8B37B /* starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30868FF628D5D12D00B8B37B /* starfield.sks */; };
 		30868FF928D5D12D00B8B37B /* explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30868FF728D5D12D00B8B37B /* explosion.sks */; };
+		30BDFD0828D84BEA00AC0A41 /* fireFromEngine.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30BDFD0728D84BEA00AC0A41 /* fireFromEngine.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		30868FEF28D5D0AA00B8B37B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30868FF628D5D12D00B8B37B /* starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = starfield.sks; sourceTree = "<group>"; };
 		30868FF728D5D12D00B8B37B /* explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explosion.sks; sourceTree = "<group>"; };
+		30BDFD0728D84BEA00AC0A41 /* fireFromEngine.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = fireFromEngine.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				30868FDF28D5D0A900B8B37B /* AppDelegate.swift */,
 				30868FE128D5D0A900B8B37B /* GameScene.sks */,
 				30868FE528D5D0A900B8B37B /* GameScene.swift */,
+				30BDFD0728D84BEA00AC0A41 /* fireFromEngine.sks */,
 				30868FE728D5D0A900B8B37B /* GameViewController.swift */,
 				30868FE928D5D0A900B8B37B /* Main.storyboard */,
 				30868FEC28D5D0AA00B8B37B /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 				30567FD228D80A0F0067A142 /* videogame-death-sound-43894.mp3 in Resources */,
 				30868FF928D5D12D00B8B37B /* explosion.sks in Resources */,
 				30868FF828D5D12D00B8B37B /* starfield.sks in Resources */,
+				30BDFD0828D84BEA00AC0A41 /* fireFromEngine.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

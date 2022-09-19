@@ -33,6 +33,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
     }
     
+        
     var possibleEnemies = ["ball","tv","hammer"]
     var gameTimer: Timer?
     var isGameOver = false
@@ -70,10 +71,16 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         physicsWorld.gravity = .zero
         physicsWorld.contactDelegate = self
         player.name = "playerExists"
+        
+        if let fireparticles = SKEmitterNode(fileNamed: "fireFromEngine"){
+            player.addChild(fireparticles)
+        }
+        
         startNewTimer()
     }
     
     func startNewTimer(){
+        
         gameTimer = Timer.scheduledTimer(timeInterval: timer, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
     }
     
@@ -107,7 +114,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
     }
     
-    override func update(_ currentTime: TimeInterval) {
+    override func update(_ currentTime: TimeInterval) {    
         for node in children {
             if node.position.x < -300{
                 node.removeFromParent()
@@ -122,8 +129,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         guard let touch = touches.first else {return}
        
         var location = touch.location(in: self)
-                let nodes = Set(self.nodes(at: location))
-                if nodes.contains(player){
+        let nodes = Set(self.nodes(at: location))
+            if nodes.contains(player){
                     isTracking = true
             }
 
@@ -134,8 +141,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         } else if location.y > 668 {
             location.y = 668
         }
+
         
         player.position = location
+        guard isTracking else {return}
+
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -156,6 +166,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 print("Doesn't contain")
                 return
             }
-// MARK: Why "Doesn't contain" appears even after the game was ended?
+// MARK: - Why "Doesn't contain" appears even after the game was ended?
     }
 }
