@@ -152,6 +152,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 isGameOver = true
                 gameOverLabel.isHidden = false
                 run(SKAction.playSoundFileNamed("Explosion+7.mp3", waitForCompletion: false))
+            } else {
+                print("Doesn't contain")
+                return
             }
+// MARK: Why "Doesn't contain" appears even after the game was ended?
     }
 }
