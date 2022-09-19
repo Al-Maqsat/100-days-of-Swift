@@ -12,11 +12,14 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var starfield: SKEmitterNode!
     var player: SKSpriteNode!
     var scoreLabel: SKLabelNode!
+    var gameOverLabel: SKLabelNode!
+    
     var isTracking = false
     var counter = 0
     
     var timer = 1.0 {
         didSet{
+            gameTimer?.invalidate()
             startNewTimer()
         }
     }
@@ -55,18 +58,26 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         score = 0
         
+        gameOverLabel = SKLabelNode(fontNamed: "Chalkduster")
+        gameOverLabel.position = CGPoint(x: 512, y: 384)
+        gameOverLabel.zPosition = 1
+        gameOverLabel.isHidden = true
+        gameOverLabel.text  = "Game Over"
+        gameOverLabel.fontSize = CGFloat(60)
+        addChild(gameOverLabel)
+        
         physicsWorld.gravity = .zero
         physicsWorld.contactDelegate = self
-        
+        player.name = "playerExists"
         startNewTimer()
     }
     
     func startNewTimer(){
-        gameTimer?.invalidate()
         gameTimer = Timer.scheduledTimer(timeInterval: timer, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
     }
     
     @objc func createEnemy(){
+        guard !isGameOver else {return}
         guard let enemy = possibleEnemies.randomElement() else {return}
         let sprite = SKSpriteNode(imageNamed: enemy)
         sprite.position = CGPoint(x: 1200, y: Int.random(in: 50...700))
@@ -80,9 +91,18 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         sprite.physicsBody?.linearDamping = 0
         counter += 1
         
-        if counter == 20 {
+        if counter == 5 {
             counter = 0
-            timer -= 0.1
+            
+            if timer <= 0.1 {
+                timer -= 0.01
+            } else if timer == 0{
+                isGameOver = true
+                print("You have won")
+                gameOverLabel.isHidden = false
+            } else {
+                timer -= 0.1
+            }
         }
     }
     
@@ -99,13 +119,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {return}
+       
         var location = touch.location(in: self)
-        
-        let nodes = Set(self.nodes(at: location))
-        if nodes.contains(player){
-            isTracking = true
-        }
-        
+                let nodes = Set(self.nodes(at: location))
+                if nodes.contains(player){
+                    isTracking = true
+            }
+
         guard isTracking else {return}
             
         if location.y < 100 {
@@ -115,7 +135,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
         
         player.position = location
-//        guard isTracking else   {return}
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -125,10 +144,15 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         let explosion = SKNode(fileNamed: "explosion")!
-        explosion.position = player.position
-        
-        addChild(explosion)
-        player.removeFromParent()
-        isGameOver = true
+            if children.contains(where: { $0.name?.contains("playerExists") ?? false }){
+                explosion.position = player.position
+                addChild(explosion)
+                player.removeFromParent()
+                isGameOver = true
+                gameOverLabel.isHidden = false
+            } else {
+                print("Doesn't contain")
+                return
+            }
     }
 }
