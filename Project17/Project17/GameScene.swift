@@ -13,6 +13,15 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var player: SKSpriteNode!
     var scoreLabel: SKLabelNode!
     var isTracking = false
+    var counter = 0
+    
+    var timer = 1.0 {
+        didSet{
+            startNewTimer()
+        }
+    }
+    
+    
     
     var score = 0{
         didSet{
@@ -49,7 +58,12 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         physicsWorld.gravity = .zero
         physicsWorld.contactDelegate = self
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        startNewTimer()
+    }
+    
+    func startNewTimer(){
+        gameTimer?.invalidate()
+        gameTimer = Timer.scheduledTimer(timeInterval: timer, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
     }
     
     @objc func createEnemy(){
@@ -64,7 +78,12 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         sprite.physicsBody?.angularVelocity = 5
         sprite.physicsBody?.angularDamping = 0
         sprite.physicsBody?.linearDamping = 0
+        counter += 1
         
+        if counter == 20 {
+            counter = 0
+            timer -= 0.1
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
