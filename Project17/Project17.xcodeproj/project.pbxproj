@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30567FD228D80A0F0067A142 /* videogame-death-sound-43894.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 30567FD128D80A0F0067A142 /* videogame-death-sound-43894.mp3 */; };
+		30567FD428D80B720067A142 /* Explosion+7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 30567FD328D80B720067A142 /* Explosion+7.mp3 */; };
 		30868FE028D5D0A900B8B37B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30868FDF28D5D0A900B8B37B /* AppDelegate.swift */; };
 		30868FE228D5D0A900B8B37B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 30868FE128D5D0A900B8B37B /* GameScene.sks */; };
 		30868FE628D5D0A900B8B37B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30868FE528D5D0A900B8B37B /* GameScene.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30567FD128D80A0F0067A142 /* videogame-death-sound-43894.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "videogame-death-sound-43894.mp3"; path = "../../Project14/Project14/videogame-death-sound-43894.mp3"; sourceTree = "<group>"; };
+		30567FD328D80B720067A142 /* Explosion+7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Explosion+7.mp3"; sourceTree = "<group>"; };
 		30868FDC28D5D0A900B8B37B /* Project17.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project17.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30868FDF28D5D0A900B8B37B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30868FE128D5D0A900B8B37B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 				30868FEE28D5D0AA00B8B37B /* LaunchScreen.storyboard */,
 				30868FF728D5D12D00B8B37B /* explosion.sks */,
 				30868FF628D5D12D00B8B37B /* starfield.sks */,
+				30567FD128D80A0F0067A142 /* videogame-death-sound-43894.mp3 */,
+				30567FD328D80B720067A142 /* Explosion+7.mp3 */,
 			);
 			path = Project17;
 			sourceTree = "<group>";
@@ -132,10 +138,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30567FD428D80B720067A142 /* Explosion+7.mp3 in Resources */,
 				30868FEB28D5D0A900B8B37B /* Main.storyboard in Resources */,
 				30868FE228D5D0A900B8B37B /* GameScene.sks in Resources */,
 				30868FED28D5D0AA00B8B37B /* Assets.xcassets in Resources */,
 				30868FF028D5D0AA00B8B37B /* LaunchScreen.storyboard in Resources */,
+				30567FD228D80A0F0067A142 /* videogame-death-sound-43894.mp3 in Resources */,
 				30868FF928D5D12D00B8B37B /* explosion.sks in Resources */,
 				30868FF828D5D12D00B8B37B /* starfield.sks in Resources */,
 			);

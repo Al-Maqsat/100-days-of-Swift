@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene,SKPhysicsContactDelegate {
     var starfield: SKEmitterNode!
@@ -150,9 +151,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 player.removeFromParent()
                 isGameOver = true
                 gameOverLabel.isHidden = false
-            } else {
-                print("Doesn't contain")
-                return
+                run(SKAction.playSoundFileNamed("Explosion+7.mp3", waitForCompletion: false))
             }
     }
 }
