@@ -12,6 +12,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var starfield: SKEmitterNode!
     var player: SKSpriteNode!
     var scoreLabel: SKLabelNode!
+    var isTracking = false
     
     var score = 0{
         didSet{
@@ -81,6 +82,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         guard let touch = touches.first else {return}
         var location = touch.location(in: self)
         
+        let nodes = Set(self.nodes(at: location))
+        if nodes.contains(player){
+            isTracking = true
+        }
+        
+        guard isTracking else {return}
+            
         if location.y < 100 {
             location.y = 100
         } else if location.y > 668 {
@@ -88,12 +96,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
         
         player.position = location
+//        guard isTracking else   {return}
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {return}
-        var location = touch.location(in: self)
-        
+        isTracking = false
     }
     
     
@@ -105,5 +112,4 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         player.removeFromParent()
         isGameOver = true
     }
-    
 }
