@@ -38,7 +38,6 @@ class ViewController: UITableViewController {
         }
         
         for i in 0..<pictures.count {
-            print("Hello")
             storms.append(Storm(stormImage: pictures[i], stormCounter: 0))
         }
     }
