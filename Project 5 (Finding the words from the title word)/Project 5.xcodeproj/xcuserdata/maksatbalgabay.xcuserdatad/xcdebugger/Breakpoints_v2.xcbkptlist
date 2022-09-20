@@ -3,41 +3,4 @@
    uuid = "24ABA80E-E328-4749-8F05-F90045640CBD"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8271412B-EF3E-4F38-8619-C481C94A7ED4"
-            shouldBeEnabled = "No"
-            nameForDebugger = "Morethan6letters"
-            condition = "answer.count == 4"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Project 5/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "submit(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F36A8DD1-28C5-4A2E-B10A-1684AD4638A8"
-            shouldBeEnabled = "No"
-            condition = "answer.count == 4"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Project 5/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "submit(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>
