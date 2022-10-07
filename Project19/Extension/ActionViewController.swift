@@ -11,7 +11,7 @@ import UniformTypeIdentifiers
 
 class ActionViewController: UIViewController {
     @IBOutlet var script: UITextView!
-    
+    var saved: String = ""
     var pageTitle = ""
     var pageURL = ""
     
@@ -19,10 +19,19 @@ class ActionViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
+        let defaults = UserDefaults.standard
+        if let savedData = defaults.object(forKey: "scrpitText") as? Data {
+            if let decodedText = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedData) as? String{
+                script.text = decodedText
+            }
+        }
+            
         let notificationCenter = NotificationCenter.default
         
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(scripts))
         
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
             if let itemProvider = inputItem.attachments?.first {
@@ -45,6 +54,8 @@ class ActionViewController: UIViewController {
     @IBAction func done() {
         let item = NSExtensionItem()
         let argument: NSDictionary = ["customJavaScript": script.text]
+        saved = script.text
+        save()
         let webDictionary: NSDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: argument]
         let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
         item.attachments = [customJavaScript]
@@ -68,5 +79,25 @@ class ActionViewController: UIViewController {
 
             let selectedRange = script.selectedRange
             script.scrollRangeToVisible(selectedRange)
+    }
+    
+    @objc func scripts(){
+        let ac = UIAlertController(title: "All available Scripts", message: nil, preferredStyle: .actionSheet)
+        
+        ac.addAction(UIAlertAction(title: "Script 1", style: .default))
+        ac.addAction(UIAlertAction(title: "Script 2", style: .default))
+        ac.addAction(UIAlertAction(title: "Script 3", style: .default))
+        ac.addAction(UIAlertAction(title: "Script 4", style: .default))
+        ac.addAction(UIAlertAction(title: "Script 5", style: .default))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .destructive))
+        
+        present(ac, animated: true)
+    }
+    
+    func save(){
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: saved, requiringSecureCoding: false){
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "scriptText")
+        }
     }
 }
